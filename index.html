@@ -76,24 +76,71 @@
           <span class="block text-xs text-teal-400 font-medium">Complete Business Software & ERP Solutions</span>
         </div>
       </div>
-      <nav class="hidden md:flex items-center space-x-7 text-sm font-medium text-gray-300">
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
         <a href="#overview" class="hover:text-teal-400 transition-colors">Overview</a>
-        <a href="#core-modules" class="hover:text-teal-400 transition-colors">Default Modules</a>
         <a href="#industries" class="hover:text-teal-400 transition-colors">Industries</a>
-        <a href="#integrations" class="hover:text-teal-400 transition-colors">Integrations</a>
         <a href="#solutions" class="hover:text-teal-400 transition-colors">Delivered Systems</a>
         <a href="#support" class="hover:text-teal-400 transition-colors">Support & Training</a>
         <a href="#contact" class="hover:text-teal-400 transition-colors">Contact</a>
       </nav>
       <div class="flex items-center space-x-3">
         <div
-          class="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30
-            text-xs text-emerald-400 font-medium"
+          class="hidden sm:flex items-center space-x-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border
+            border-emerald-500/30 text-xs text-emerald-400 font-medium"
         >
           <span class="w-2 h-2 rounded-full bg-emerald-400 glow-dot animate-pulse"></span>
-          <span>Open for Implementations</span>
+          <span>Open for Work</span>
         </div>
+        <button
+          onclick="toggleMobileMenu()"
+          class="md:hidden p-2 rounded-xl bg-gray-800 text-gray-300 hover:text-white focus:outline-none"
+          aria-label="Toggle menu"
+        >
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
       </div>
+    </div>
+    <!-- Clean Mobile dropdown menu -->
+    <div
+      id="mobile-menu"
+      class="hidden md:hidden pt-4 pb-2 border-t border-gray-800/80 mt-3 space-y-2 text-sm font-medium
+        text-gray-300"
+    >
+      <a
+        href="#overview"
+        onclick="toggleMobileMenu()"
+        class="block px-3 py-2 rounded-lg hover:bg-gray-800 hover:text-teal-400 transition-colors"
+      >
+        Overview
+      </a>
+      <a
+        href="#industries"
+        onclick="toggleMobileMenu()"
+        class="block px-3 py-2 rounded-lg hover:bg-gray-800 hover:text-teal-400 transition-colors"
+      >
+        Industries
+      </a>
+      <a
+        href="#solutions"
+        onclick="toggleMobileMenu()"
+        class="block px-3 py-2 rounded-lg hover:bg-gray-800 hover:text-teal-400 transition-colors"
+      >
+        Delivered Systems
+      </a>
+      <a
+        href="#support"
+        onclick="toggleMobileMenu()"
+        class="block px-3 py-2 rounded-lg hover:bg-gray-800 hover:text-teal-400 transition-colors"
+      >
+        Support & Training
+      </a>
+      <a
+        href="#contact"
+        onclick="toggleMobileMenu()"
+        class="block px-3 py-2 rounded-lg hover:bg-gray-800 hover:text-teal-400 transition-colors"
+      >
+        Contact
+      </a>
     </div>
   </header>
 
