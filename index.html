@@ -1,1528 +1,750 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CoreSync Solutions | Freelance Business Software & ERP Specialists</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>CoreSync Solutions | Freelance Business Software Experts</title>
+  <meta name="description" content="One simple software for billing, stock, accounts, staff and online orders. We set it up, move your old data, train your staff and support you — anywhere in the world." />
+  <meta name="theme-color" content="#2a6f6b" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="CoreSync Solutions — Freelance experts who set up business software for you" />
+  <meta property="og:description" content="Billing, stock, accounts, staff and online orders in one place. Easy switch from any software. Serving businesses worldwide." />
+  <meta name="twitter:card" content="summary" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-          },
-          colors: {
-            brand: {
-              purple: '#714B67',
-              teal: '#00A09D',
-              dark: '#07090e',
-              card: '#111827',
-              border: '#1F2937',
-            },
-          },
-        },
-      },
-    };
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --bg: #fffcf7;
+      --bg-soft: #f6efe5;
+      --text: #24304a;
+      --muted: #66708a;
+      --line: #ece3d5;
+      --brand: #2a6f6b;
+      --brand-dark: #1d5451;
+      --brand-soft: #dff0eb;
+      --accent: #e8806c;
+      --accent-dark: #b9533f;
+      --accent-soft: #fde9e3;
+      --whatsapp: #25d366;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      background-color: #07090e;
-      color: #e2e8f0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      font-size: 16px;
     }
-    .glass-card {
-      background: rgba(17, 24, 39, 0.7);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.25s ease-in-out;
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255, 252, 247, 0.95);
+      border-bottom: 1px solid var(--line);
     }
-    .glass-card:hover {
-      border-color: rgba(0, 160, 157, 0.4);
-      box-shadow: 0 10px 30px -10px rgba(0, 160, 157, 0.2);
+    header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 68px; max-width: 1200px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; white-space: nowrap; flex: none; }
+    .logo small { display: block; font-size: 12px; font-weight: 600; color: var(--muted); margin-top: -2px; }
+    .logo span.mark {
+      width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--brand), var(--accent)); color: #fff;
+      display: grid; place-items: center; font-size: 18px;
     }
-    .gradient-text {
-      background: linear-gradient(135deg, #a78bfa 0%, #38bdf8 50%, #34d399 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    nav { display: flex; gap: 26px; font-size: 15px; font-weight: 600; color: var(--muted); white-space: nowrap; }
+    nav a:hover { color: var(--brand); }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 22px; border-radius: 10px; font-weight: 700; font-size: 15px;
+      transition: background 0.2s;
     }
-    .glow-dot {
-      box-shadow: 0 0 12px #34d399;
+    .btn-main { background: var(--brand); color: #fff; }
+    .btn-main:hover { background: var(--brand-dark); }
+    .btn-wa { background: var(--whatsapp); color: #fff; }
+    .btn-wa:hover { background: #1ebe5b; }
+    .btn-line { border: 2px solid var(--brand); color: var(--brand); background: #fff; }
+    .btn-line:hover { background: var(--brand); color: #fff; }
+    .btn-small { padding: 9px 16px; font-size: 14px; white-space: nowrap; flex: none; }
+
+    /* Hero */
+    .hero { padding: 72px 0 56px; text-align: center; background: radial-gradient(circle at 15% 20%, var(--accent-soft) 0, transparent 40%), radial-gradient(circle at 85% 30%, var(--brand-soft) 0, transparent 45%), var(--bg); }
+    .hero h1 { font-size: clamp(30px, 5vw, 46px); line-height: 1.2; font-weight: 800; margin-bottom: 18px; }
+    .hero h1 em { font-style: normal; color: var(--brand); }
+    .hero p { max-width: 640px; margin: 0 auto 30px; color: var(--muted); font-size: 18px; }
+    .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 32px; margin-top: 40px; color: var(--muted); font-size: 15px; }
+    .facts b { color: var(--accent-dark); }
+
+    /* Sections */
+    section { padding: 64px 0; }
+    section.soft { background: var(--bg-soft); }
+    .head { text-align: center; max-width: 640px; margin: 0 auto 40px; }
+    .head h2 { font-size: clamp(24px, 3.5vw, 32px); font-weight: 800; margin-bottom: 10px; }
+    .head p { color: var(--muted); }
+
+    .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .card {
+      background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 24px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(42, 111, 107, 0.12); }
+    .card .icon {
+      font-size: 24px; margin-bottom: 12px; width: 48px; height: 48px; border-radius: 12px;
+      background: var(--brand-soft); display: grid; place-items: center;
+    }
+    .card h3 { font-size: 18px; margin-bottom: 6px; }
+    .card p { color: var(--muted); font-size: 15px; }
+
+    /* Business types */
+    .types { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .type { display: flex; gap: 14px; align-items: flex-start; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+    .type .icon { font-size: 22px; line-height: 1; flex: none; width: 44px; height: 44px; border-radius: 50%; background: var(--accent-soft); display: grid; place-items: center; }
+    .type h3 { font-size: 16px; margin-bottom: 2px; }
+    .type p { color: var(--muted); font-size: 14px; }
+
+    /* Connect chips */
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; max-width: 820px; margin: 0 auto; }
+    .chip { background: #fff; border: 1px solid var(--brand-soft); color: var(--brand-dark); border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 600; }
+
+    /* Work done */
+    .work .card ul { list-style: none; margin-top: 12px; }
+    .work .card li { font-size: 14px; color: var(--text); padding-left: 22px; position: relative; margin-bottom: 4px; }
+    .work .card li::before { content: '✓'; position: absolute; left: 0; color: var(--brand); font-weight: 800; }
+    .tag { display: inline-block; font-size: 12px; font-weight: 700; color: var(--accent-dark); background: var(--accent-soft); border-radius: 999px; padding: 3px 10px; margin-bottom: 10px; }
+    .card .link { display: inline-block; margin-top: 14px; color: var(--brand); font-weight: 700; font-size: 14px; }
+
+    /* Steps */
+    .steps { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); counter-reset: step; }
+    .step { position: relative; padding: 24px; padding-top: 58px; background: #fff; border: 1px solid var(--line); border-radius: 14px; }
+    .step::before {
+      counter-increment: step; content: counter(step);
+      position: absolute; top: 18px; left: 24px; width: 30px; height: 30px; border-radius: 50%;
+      background: var(--accent); color: #fff; font-weight: 800; display: grid; place-items: center; font-size: 15px;
+    }
+    .step h3 { font-size: 17px; margin-bottom: 6px; }
+    .step p { color: var(--muted); font-size: 15px; }
+
+    /* Promise list */
+    .promise { max-width: 720px; margin: 0 auto; list-style: none; display: grid; gap: 12px; }
+    .promise li { background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--brand); border-radius: 12px; padding: 16px 18px 16px 50px; position: relative; }
+    .promise li::before { content: '✓'; position: absolute; left: 18px; top: 15px; color: var(--brand); font-weight: 800; font-size: 18px; }
+    .promise b { display: block; }
+    .promise span { color: var(--muted); font-size: 15px; }
+
+    /* Contact */
+    .contact { text-align: center; }
+    .contact-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); max-width: 960px; margin: 0 auto; text-align: left; }
+    .person h3 { font-size: 18px; margin-bottom: 12px; }
+    .person a { display: flex; gap: 10px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line); font-size: 15px; }
+    .person a:hover { color: var(--brand); }
+
+    /* Mobile highlight */
+    .mobile-box {
+      margin-top: 24px; display: flex; gap: 18px; align-items: center;
+      background: var(--accent-soft); border-radius: 16px; padding: 22px 24px;
+    }
+    .mobile-box .big { font-size: 40px; line-height: 1; }
+    .mobile-box h3 { font-size: 18px; margin-bottom: 4px; }
+    .mobile-box p { color: var(--muted); font-size: 15px; }
+
+    /* FAQ */
+    .faq { max-width: 760px; margin: 0 auto; display: grid; gap: 10px; }
+    .faq details { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; }
+    .faq summary { cursor: pointer; font-weight: 700; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; color: var(--accent); font-size: 22px; line-height: 1; }
+    .faq details[open] summary::after { content: '–'; }
+    .faq details p { color: var(--muted); margin-top: 10px; font-size: 15px; }
+
+    /* Contact form */
+    .form-card { max-width: 620px; margin: 28px auto 0; text-align: left; }
+    .form-card h3 { font-size: 18px; margin-bottom: 4px; }
+    .form-card .sub { color: var(--muted); font-size: 14px; margin-bottom: 16px; }
+    .form-row { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
+    .form-card label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 4px; color: var(--text); }
+    .form-card input, .form-card select, .form-card textarea {
+      width: 100%; padding: 11px 12px; border: 1px solid var(--line); border-radius: 10px;
+      font: inherit; font-size: 15px; background: var(--bg); color: var(--text); margin-bottom: 12px;
+    }
+    .form-card input:focus, .form-card select:focus, .form-card textarea:focus { outline: 2px solid var(--brand-soft); border-color: var(--brand); }
+    .form-card button { width: 100%; justify-content: center; border: 0; cursor: pointer; font: inherit; font-weight: 700; }
+
+    footer { padding: 28px 0; background: var(--text); text-align: center; color: #c9cfdc; font-size: 14px; }
+
+    /* Floating WhatsApp */
+    .wa-float {
+      position: fixed; right: 18px; bottom: 18px; z-index: 20;
+      background: var(--whatsapp); color: #fff; border-radius: 999px; padding: 12px 18px;
+      font-weight: 700; font-size: 15px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+    }
+
+    @media (max-width: 900px) {
+      nav { display: none; }
+    }
+    @media (max-width: 480px) {
+      .logo { font-size: 16px; }
+      .logo small { display: none; }
+      .wa-float { display: none; }
+    }
+    @media (max-width: 760px) {
+      .hero { padding: 48px 0 40px; }
+      .hero p { font-size: 16px; }
+      section { padding: 48px 0; }
+      .form-row { grid-template-columns: 1fr; }
+      .mobile-box { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
-<body class="antialiased selection:bg-teal-500 selection:text-white">
+<body>
 
-  <!-- Navbar -->
-  <header class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-gray-800/80 px-6 py-4">
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <div
-          class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-teal-400 flex items-center justify-center
-            font-bold text-white shadow-lg"
-        >
-          C
-        </div>
-        <div>
-          <span class="font-bold text-lg text-white tracking-tight">CoreSync Solutions</span>
-          <span class="block text-xs text-teal-400 font-medium">Group of Freelance Tech Specialists</span>
-        </div>
-      </div>
-      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
-        <a href="#overview" class="hover:text-teal-400 transition-colors">Overview</a>
-        <a href="#industries" class="hover:text-teal-400 transition-colors">Industries</a>
-        <a href="#solutions" class="hover:text-teal-400 transition-colors">Delivered Systems</a>
-        <a href="#support" class="hover:text-teal-400 transition-colors">Support & Training</a>
-        <a href="#contact" class="hover:text-teal-400 transition-colors">Contact</a>
+  <header>
+    <div class="wrap">
+      <a href="#" class="logo"><span class="mark">C</span><span>CoreSync Solutions<small>Freelance business software experts</small></span></a>
+      <nav>
+        <a href="#what">Services</a>
+        <a href="#work">Our work</a>
+        <a href="#about">About us</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
       </nav>
-      <div class="flex items-center space-x-3">
-        <div
-          class="hidden sm:flex items-center space-x-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border
-            border-emerald-500/30 text-xs text-emerald-400 font-medium"
-        >
-          <span class="w-2 h-2 rounded-full bg-emerald-400 glow-dot animate-pulse"></span>
-          <span>Open for Work</span>
-        </div>
-        <button
-          onclick="toggleMobileMenu()"
-          class="md:hidden p-2 rounded-xl bg-gray-800 text-gray-300 hover:text-white focus:outline-none"
-          aria-label="Toggle menu"
-        >
-          <i data-lucide="menu" class="w-5 h-5"></i>
-        </button>
-      </div>
-    </div>
-    <!-- Clean Mobile dropdown menu -->
-    <div
-      id="mobile-menu"
-      class="hidden md:hidden pt-4 pb-2 border-t border-gray-800/80 mt-3 space-y-2 text-sm font-medium
-        text-gray-300"
-    >
-      <a
-        href="#overview"
-        onclick="toggleMobileMenu()"
-        class="block px-3 py-2 rounded-lg hover:bg-gray-800 hover:text-teal-400 transition-colors"
-      >
-        Overview
-      </a>
-      <a
-        href="#industries"
-        onclick="toggleMobileMenu()"
-        class="block px-3 py-2 rounded-lg hover:bg-gray-800 hover:text-teal-400 transition-colors"
-      >
-        Industries
-      </a>
-      <a
-        href="#solutions"
-        onclick="toggleMobileMenu()"
-        class="block px-3 py-2 rounded-lg hover:bg-gray-800 hover:text-teal-400 transition-colors"
-      >
-        Delivered Systems
-      </a>
-      <a
-        href="#support"
-        onclick="toggleMobileMenu()"
-        class="block px-3 py-2 rounded-lg hover:bg-gray-800 hover:text-teal-400 transition-colors"
-      >
-        Support & Training
-      </a>
-      <a
-        href="#contact"
-        onclick="toggleMobileMenu()"
-        class="block px-3 py-2 rounded-lg hover:bg-gray-800 hover:text-teal-400 transition-colors"
-      >
-        Contact
-      </a>
+      <a href="https://wa.me/919567233672" target="_blank" class="btn btn-wa btn-small">WhatsApp us</a>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section id="overview" class="pt-36 pb-20 px-6 relative overflow-hidden">
-    <div
-      class="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-purple-600/15 rounded-full blur-3xl
-        pointer-events-none"
-    ></div>
-    <div
-      class="absolute top-48 right-10 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"
-    ></div>
-    
-    <div class="max-w-6xl mx-auto text-center relative z-10">
-      <div
-        class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-gray-800/80 border border-gray-700 text-xs
-          font-medium text-gray-300 mb-8"
-      >
-        <i data-lucide="check-circle" class="w-4 h-4 text-teal-400"></i>
-        <span>CoreSync Solutions • Dedicated Group of Freelance Engineers & Architects</span>
-      </div>
-      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
-        Complete Enterprise ERP & <br />
-        <span class="gradient-text">Business Technology Partner</span>
-      </h1>
-      <p class="max-w-3xl mx-auto text-base sm:text-lg text-gray-400 mb-10 leading-relaxed">
-        I implement complete business ERP solutions for your company—using standard built-in modules to save you time
-          and
-        money, connecting card swipe machines and food apps, building custom features when needed, and hosting
-        everything securely on the cloud.
+  <!-- Hero -->
+  <div class="hero">
+    <div class="wrap">
+      <h1>One simple software to run<br /><em>your whole business</em></h1>
+      <p>
+        Billing, stock, accounts, staff and online orders — all in one place.
+        We are a small team of freelance experts — we set it up for you, train your staff, and stay with you after it goes live.
       </p>
-
-      <div class="flex flex-wrap items-center justify-center gap-4 mb-16">
-        <a
-          href="#core-modules"
-          class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 text-gray-950 font-bold text-sm
-            shadow-xl hover:shadow-teal-500/30 transition-all flex items-center space-x-2"
-        >
-          <span>See Built-In ERP Modules</span>
-          <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </a>
-        <a
-          href="#integrations"
-          class="px-6 py-3.5 rounded-xl bg-gray-800/90 hover:bg-gray-700/80 text-white font-semibold text-sm border
-            border-gray-700 transition-all flex items-center space-x-2"
-        >
-          <i data-lucide="cpu" class="w-4 h-4 text-teal-400"></i>
-          <span>Hardware & Integrations</span>
-        </a>
-        <a
-          href="https://wa.me/919567233672"
-          target="_blank"
-          class="px-6 py-3.5 rounded-xl bg-emerald-600/90 hover:bg-emerald-500 text-white font-semibold text-sm
-            transition-all flex items-center space-x-2"
-        >
-          <i data-lucide="message-circle" class="w-4 h-4"></i>
-          <span>Chat on WhatsApp</span>
-        </a>
+      <div class="actions">
+        <a href="https://wa.me/919567233672" target="_blank" class="btn btn-wa">💬 Chat on WhatsApp</a>
+        <a href="#work" class="btn btn-line">See our work</a>
       </div>
-
-      <!-- Stat Badges -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-        <div class="glass-card p-5 rounded-2xl text-center">
-          <div class="text-3xl font-extrabold text-white mb-1">4+</div>
-          <div class="text-xs text-gray-400 uppercase tracking-wider font-semibold">Years Enterprise Delivery</div>
-        </div>
-        <div class="glass-card p-5 rounded-2xl text-center">
-          <div class="text-3xl font-extrabold text-teal-400 mb-1">Any Version</div>
-          <div class="text-xs text-gray-400 uppercase tracking-wider font-semibold">Community & Enterprise</div>
-        </div>
-        <div class="glass-card p-5 rounded-2xl text-center">
-          <div class="text-3xl font-extrabold text-purple-400 mb-1">35+</div>
-          <div class="text-xs text-gray-400 uppercase tracking-wider font-semibold">Businesses Implemented</div>
-        </div>
-        <div class="glass-card p-5 rounded-2xl text-center">
-          <div class="text-3xl font-extrabold text-emerald-400 mb-1">99.9%</div>
-          <div class="text-xs text-gray-400 uppercase tracking-wider font-semibold">Cloud System Uptime</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Core Default ERP Modules Section (New Section) -->
-  <section id="core-modules" class="py-20 px-6 border-t border-gray-900 bg-gray-950/70 relative z-10">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-3">Built-In Power</h2>
-        <h3 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Core ERP Modules Ready for Your
-          Business</h3>
-        <p class="max-w-2xl mx-auto text-sm text-gray-400 mt-4 leading-relaxed">
-          Our ERP platform comes packed with battle-tested standard modules. We configure and set them up to run your
-            business
-          efficiently, saving you heavy custom development costs:
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-        <!-- Module 1: Sales & Invoicing -->
-        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center
-              text-teal-400 mb-4">
-              <i data-lucide="receipt" class="w-5 h-5"></i>
-            </div>
-            <h4 class="text-base font-bold text-white mb-2">Sales & Invoicing</h4>
-            <p class="text-xs text-gray-400 leading-relaxed mb-4">
-              Create professional quotations with price lists and discounts. Convert quotes to sales orders with 1 click
-              and generate printed or digital WhatsApp/Email invoices.
-            </p>
-          </div>
-          <ul class="text-xs text-gray-400 space-y-1.5 border-t border-gray-800/80 pt-3">
-            <li>• Instant PDF / WhatsApp bills</li>
-            <li>• Multi-currency & GST / VAT tax</li>
-            <li>• Customer outstanding balances</li>
-          </ul>
-        </div>
-
-        <!-- Module 2: Inventory & Warehousing -->
-        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center
-              justify-center text-purple-400 mb-4">
-              <i data-lucide="package" class="w-5 h-5"></i>
-            </div>
-            <h4 class="text-base font-bold text-white mb-2">Inventory & Warehousing</h4>
-            <p class="text-xs text-gray-400 leading-relaxed mb-4">
-              Real-time stock tracking across multiple shops, godowns, or vans. Double-entry inventory ensures your
-                stock
-              counts never get mismatched.
-            </p>
-          </div>
-          <ul class="text-xs text-gray-400 space-y-1.5 border-t border-gray-800/80 pt-3">
-            <li>• Barcode scanning & stock transfers</li>
-            <li>• Automatic low-stock warnings</li>
-            <li>• Serial number & batch / expiry dates</li>
-          </ul>
-        </div>
-
-        <!-- Module 3: Purchases & Vendor Control -->
-        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center
-              text-sky-400 mb-4">
-              <i data-lucide="shopping-cart" class="w-5 h-5"></i>
-            </div>
-            <h4 class="text-base font-bold text-white mb-2">Purchase & Vendors</h4>
-            <p class="text-xs text-gray-400 leading-relaxed mb-4">
-              Manage supplier prices, issue purchase orders, and track goods received (GRN) against vendor bills so you
-              never get overcharged.
-            </p>
-          </div>
-          <ul class="text-xs text-gray-400 space-y-1.5 border-t border-gray-800/80 pt-3">
-            <li>• Automated re-ordering rules</li>
-            <li>• Supplier price comparison</li>
-            <li>• 3-way invoice matching</li>
-          </ul>
-        </div>
-
-        <!-- Module 4: Accounting & Finance -->
-        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center
-              justify-center text-emerald-400 mb-4">
-              <i data-lucide="calculator" class="w-5 h-5"></i>
-            </div>
-            <h4 class="text-base font-bold text-white mb-2">Accounting & Reports</h4>
-            <p class="text-xs text-gray-400 leading-relaxed mb-4">
-              Full accounting package: Profit & Loss statements, Balance Sheets, automated bank statement matching, and
-              tax filing reports.
-            </p>
-          </div>
-          <ul class="text-xs text-gray-400 space-y-1.5 border-t border-gray-800/80 pt-3">
-            <li>• Instant Profit & Loss & Balance Sheet</li>
-            <li>• Bank feeds & statement reconciliation</li>
-            <li>• Audit trail & double-entry ledgers</li>
-          </ul>
-        </div>
-
-        <!-- Module 5: Point of Sale (POS) -->
-        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center
-              text-amber-400 mb-4">
-              <i data-lucide="store" class="w-5 h-5"></i>
-            </div>
-            <h4 class="text-base font-bold text-white mb-2">Point of Sale (POS)</h4>
-            <p class="text-xs text-gray-400 leading-relaxed mb-4">
-              Touch-friendly billing counter for retail shops, supermarkets, and restaurants. Works completely offline
-              even if internet drops.
-            </p>
-          </div>
-          <ul class="text-xs text-gray-400 space-y-1.5 border-t border-gray-800/80 pt-3">
-            <li>• Restaurant table & kitchen routing</li>
-            <li>• Customer loyalty points & coupons</li>
-            <li>• Cash drawer tally & cashier closing</li>
-          </ul>
-        </div>
-
-        <!-- Module 6: CRM & Sales Pipeline -->
-        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center
-              text-rose-400 mb-4">
-              <i data-lucide="user-check" class="w-5 h-5"></i>
-            </div>
-            <h4 class="text-base font-bold text-white mb-2">CRM & Customer Leads</h4>
-            <p class="text-xs text-gray-400 leading-relaxed mb-4">
-              Track customer inquiries, phone calls, and quotation stages. Ensure your sales team follows up with every
-              potential customer promptly.
-            </p>
-          </div>
-          <ul class="text-xs text-gray-400 space-y-1.5 border-t border-gray-800/80 pt-3">
-            <li>• Visual kanban sales pipeline</li>
-            <li>• Follow-up call & meeting reminders</li>
-            <li>• Quotation win/loss rate analysis</li>
-          </ul>
-        </div>
-
-        <!-- Module 7: Manufacturing (MRP) -->
-        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center
-              text-blue-400 mb-4">
-              <i data-lucide="cog" class="w-5 h-5"></i>
-            </div>
-            <h4 class="text-base font-bold text-white mb-2">Manufacturing & MRP</h4>
-            <p class="text-xs text-gray-400 leading-relaxed mb-4">
-              Define product recipes (Bill of Materials), manage work orders, plan machine capacity, and calculate exact
-              manufacturing costs.
-            </p>
-          </div>
-          <ul class="text-xs text-gray-400 space-y-1.5 border-t border-gray-800/80 pt-3">
-            <li>• Multi-level Bill of Materials (BOM)</li>
-            <li>• Work center capacity & scheduling</li>
-            <li>• Finished goods cost tracking</li>
-          </ul>
-        </div>
-
-        <!-- Module 8: HR, Attendance & Payroll -->
-        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center
-              text-teal-400 mb-4">
-              <i data-lucide="users" class="w-5 h-5"></i>
-            </div>
-            <h4 class="text-base font-bold text-white mb-2">HR, Attendance & Salary</h4>
-            <p class="text-xs text-gray-400 leading-relaxed mb-4">
-              Maintain employee profiles, approve leaves, record biometric attendance, and generate monthly payslips
-                with
-              tax deductions.
-            </p>
-          </div>
-          <ul class="text-xs text-gray-400 space-y-1.5 border-t border-gray-800/80 pt-3">
-            <li>• Biometric punch machine sync</li>
-            <li>• Staff leave tracking & approvals</li>
-            <li>• 1-Click monthly salary processing</li>
-          </ul>
-        </div>
-
-      </div>
-
-      <!-- Cost-Saving Highlight Box -->
-      <div class="mt-12 p-6 rounded-2xl glass-card border border-teal-500/30 flex flex-col sm:flex-row items-center
-        justify-between gap-4">
-        <div class="flex items-center space-x-4">
-          <div class="w-12 h-12 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center shrink-0">
-            <i data-lucide="sparkles" class="w-6 h-6"></i>
-          </div>
-          <div>
-            <div class="text-sm font-bold text-white">We Leverage Ready Built-In Modules To Save You Money</div>
-            <div class="text-xs text-gray-400 mt-0.5">
-              We configure these battle-tested default apps first, and only write custom code when your business needs
-              something unique—giving you the fastest and most cost-effective implementation.
-            </div>
-          </div>
-        </div>
-        <a
-          href="#contact"
-          class="px-5 py-2.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-gray-950 font-bold text-xs uppercase
-            tracking-wider transition-all whitespace-nowrap"
-        >
-          Discuss Your Setup
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Industries We Specialize In (New Comprehensive Section) -->
-  <section id="industries" class="py-20 px-6 border-t border-gray-900 bg-gray-950/40 relative z-10">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-3">Tailored Solutions</h2>
-        <h3 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Industries & Businesses We Power</h3>
-        <p class="max-w-2xl mx-auto text-sm text-gray-400 mt-4 leading-relaxed">
-          Every industry has unique challenges. Here is how our ERP and business software solves the exact operational
-          pain points across different commercial sectors:
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-        <!-- Industry 1: Medical & Healthcare -->
-        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center
-              text-rose-400 mb-4">
-              <i data-lucide="stethoscope" class="w-5 h-5"></i>
-            </div>
-            <h4 class="text-base font-bold text-white mb-2">Medical Clinics & Hospitals</h4>
-            <p class="text-xs text-gray-400 leading-relaxed mb-4">
-              Manage patient appointments, doctor consultation schedules, treatment billing, and electronic health
-              records without messy paper files.
-            </p>
-          </div>
-          <ul class="text-xs text-gray-400 space-y-1.5 border-t border-gray-800/80 pt-3">
-            <li>• Patient appointment booking & queues</li>
-            <li>• Doctor consultation & lab billing</li>
-            <li>• Digital medical history records</li>
-          </ul>
-        </div>
-
-        <!-- Industry 2: Pharmacies & Drug Stores -->
-        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center
-              text-teal-400 mb-4">
-              <i data-lucide="pill" class="w-5 h-5"></i>
-            </div>
-            <h4 class="text-base font-bold text-white mb-2">Pharmacies & Healthcare Retail</h4>
-            <p class="text-xs text-gray-400 leading-relaxed mb-4">
-              Prevent dead inventory and regulatory issues with automated batch and expiry date tracking. Fast barcode
-              counter billing.
-            </p>
-          </div>
-          <ul class="text-xs text-gray-400 space-y-1.5 border-t border-gray-800/80 pt-3">
-            <li>• Batch number & expiry date alerts</li>
-            <li>• Blocks expired medicine sales automatically</li>
-            <li>• Automatic supplier reorders on low stock</li>
-          </ul>
-        </div>
-
-        <!-- Industry 3: Construction & Contracting -->
-        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center
-              text-amber-400 mb-4">
-              <i data-lucide="hard-hat" class="w-5 h-5"></i>
-            </div>
-            <h4 class="text-base font-bold text-white mb-2">Construction & Contractors</h4>
-            <p class="text-xs text-gray-400 leading-relaxed mb-4">
-              Track project milestones, materials delivered to construction sites, subcontractor labor bills, and
-              equipment rental expenses.
-            </p>
-          </div>
-          <ul class="text-xs text-gray-400 space-y-1.5 border-t border-gray-800/80 pt-3">
-            <li>• Site material delivery & consumption</li>
-            <li>• Subcontractor stage-wise billing</li>
-            <li>• Budget vs actual project cost tracking</li>
-          </ul>
-        </div>
-
-        <!-- Industry 4: Manufacturing & Factories -->
-        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center
-              justify-center text-purple-400 mb-4">
-              <i data-lucide="factory" class="w-5 h-5"></i>
-            </div>
-            <h4 class="text-base font-bold text-white mb-2">Manufacturing & Fabrication</h4>
-            <p class="text-xs text-gray-400 leading-relaxed mb-4">
-              Complete shop-floor visibility: define raw material recipes (BOM), track machine capacity, reduce scrap
-              waste, and know exact unit costs.
-            </p>
-          </div>
-          <ul class="text-xs text-gray-400 space-y-1.5 border-t border-gray-800/80 pt-3">
-            <li>• Multi-level Bill of Materials (BOM)</li>
-            <li>• Raw material waste & scrap reduction</li>
-            <li>• Finished goods cost & delivery notes</li>
-          </ul>
-        </div>
-
-        <!-- Industry 5: Fitness, Gyms & Health Clubs -->
-        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center
-              justify-center text-emerald-400 mb-4">
-              <i data-lucide="dumbbell" class="w-5 h-5"></i>
-            </div>
-            <h4 class="text-base font-bold text-white mb-2">Fitness, Gyms & Wellness</h4>
-            <p class="text-xs text-gray-400 leading-relaxed mb-4">
-              Automate membership renewals, trainer schedules, and connect turnstile door gates to biometric
-              fingerprint/card scanners for members.
-            </p>
-          </div>
-          <ul class="text-xs text-gray-400 space-y-1.5 border-t border-gray-800/80 pt-3">
-            <li>• Turnstile biometric gate access control</li>
-            <li>• Automated WhatsApp renewal reminders</li>
-            <li>• Monthly recurring subscription billing</li>
-          </ul>
-        </div>
-
-        <!-- Industry 6: Fashion & Retail (Herstore) -->
-        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center
-              text-sky-400 mb-4">
-              <i data-lucide="shopping-bag" class="w-5 h-5"></i>
-            </div>
-            <h4 class="text-base font-bold text-white mb-2">Fashion & Supermarkets</h4>
-            <p class="text-xs text-gray-400 leading-relaxed mb-4">
-              Omnichannel retail: synchronized online store with mobile OTP login, Pine Labs card swipe machines, and
-              instant barcode counter billing.
-            </p>
-          </div>
-          <ul class="text-xs text-gray-400 space-y-1.5 border-t border-gray-800/80 pt-3">
-            <li>• Physical store POS & swipe machine sync</li>
-            <li>• Online shop with 1-click mobile OTP</li>
-            <li>• WhatsApp digital receipts & promotions</li>
-          </ul>
-        </div>
-
-        <!-- Industry 7: Restaurants, Cafes & QSR -->
-        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center
-              text-amber-400 mb-4">
-              <i data-lucide="coffee" class="w-5 h-5"></i>
-            </div>
-            <h4 class="text-base font-bold text-white mb-2">Restaurants, Cafes & Chains</h4>
-            <p class="text-xs text-gray-400 leading-relaxed mb-4">
-              Cut waiting lines with self-ordering touch kiosks, send orders to paperless kitchen screens (KDS), and
-              auto-print Swiggy/Zomato orders.
-            </p>
-          </div>
-          <ul class="text-xs text-gray-400 space-y-1.5 border-t border-gray-800/80 pt-3">
-            <li>• Touchscreen self-ordering kiosks</li>
-            <li>• Paperless kitchen display screens (KDS)</li>
-            <li>• Automatic Swiggy & Zomato order intake</li>
-          </ul>
-        </div>
-
-        <!-- Industry 8: Wholesale, Trading & Distribution -->
-        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center
-              text-blue-400 mb-4">
-              <i data-lucide="truck" class="w-5 h-5"></i>
-            </div>
-            <h4 class="text-base font-bold text-white mb-2">Wholesale & Distribution</h4>
-            <p class="text-xs text-gray-400 leading-relaxed mb-4">
-              Manage multi-godown stock, customer credit limits, outstanding ledger balances, and route delivery
-              challans with instant GST invoices.
-            </p>
-          </div>
-          <ul class="text-xs text-gray-400 space-y-1.5 border-t border-gray-800/80 pt-3">
-            <li>• Customer credit limits & debt reminders</li>
-            <li>• Multi-godown stock transfers & audits</li>
-            <li>• Delivery dispatch tracking & challans</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Full Hardware & Integrations Ecosystem Section -->
-  <section id="integrations" class="py-20 px-6 border-t border-gray-900 bg-gray-950/50 relative z-10">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-3">Connect Everything</h2>
-        <h3 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Machines, Apps & Services We Connect to
-          Your System</h3>
-        <p class="max-w-2xl mx-auto text-sm text-gray-400 mt-4 leading-relaxed">
-          Your system is not an island. We connect your ERP directly to the hardware machines, payment devices, courier
-          services, and delivery apps you use every day:
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <!-- Integration 1: Payment Machines & Terminals -->
-        <div class="glass-card p-6 rounded-2xl">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center
-            text-blue-400 mb-4">
-            <i data-lucide="credit-card" class="w-5 h-5"></i>
-          </div>
-          <h4 class="text-base font-bold text-white mb-2">Card Swipe Machines & Payments</h4>
-          <p class="text-xs text-gray-400 leading-relaxed mb-4">
-            Directly connect your billing computer to card swipe terminals so cashier calculation mistakes are
-            completely eliminated.
-          </p>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="px-2 py-0.5 rounded bg-gray-800 text-[11px] text-gray-300">Pine Labs Smart Terminals</span>
-            <span class="px-2 py-0.5 rounded bg-gray-800 text-[11px] text-gray-300">Paytm Soundbox / EDC</span>
-            <span class="px-2 py-0.5 rounded bg-gray-800 text-[11px] text-gray-300">Dynamic UPI QR Codes</span>
-            <span class="px-2 py-0.5 rounded bg-gray-800 text-[11px] text-gray-300">Razorpay / Stripe</span>
-          </div>
-        </div>
-
-        <!-- Integration 2: Food Delivery Apps -->
-        <div class="glass-card p-6 rounded-2xl">
-          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center
-            justify-center text-emerald-400 mb-4">
-            <i data-lucide="utensils" class="w-5 h-5"></i>
-          </div>
-          <h4 class="text-base font-bold text-white mb-2">Swiggy & Zomato Food Apps</h4>
-          <p class="text-xs text-gray-400 leading-relaxed mb-4">
-            Online orders come directly into your billing counter and kitchen printer. Zero manual tablet typing.
-          </p>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="px-2 py-0.5 rounded bg-gray-800 text-[11px] text-gray-300">Swiggy Live Orders</span>
-            <span class="px-2 py-0.5 rounded bg-gray-800 text-[11px] text-gray-300">Zomato Live Orders</span>
-            <span class="px-2 py-0.5 rounded bg-gray-800 text-[11px] text-gray-300">UrbanPiper API Integration</span>
-            <span class="px-2 py-0.5 rounded bg-gray-800 text-[11px] text-gray-300">Auto Stock & Item Sync</span>
-          </div>
-        </div>
-
-        <!-- Integration 3: Store Hardware -->
-        <div class="glass-card p-6 rounded-2xl">
-          <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center
-            text-purple-400 mb-4">
-            <i data-lucide="scan" class="w-5 h-5"></i>
-          </div>
-          <h4 class="text-base font-bold text-white mb-2">Store Hardware & Machines</h4>
-          <p class="text-xs text-gray-400 leading-relaxed mb-4">
-            Plug-and-play support for all your physical billing equipment, weighing scales, and attendance devices.
-          </p>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="px-2 py-0.5 rounded bg-gray-800 text-[11px] text-gray-300">Digital Weighing Scales</span>
-            <span class="px-2 py-0.5 rounded bg-gray-800 text-[11px] text-gray-300">Thermal Receipt Printers</span>
-            <span class="px-2 py-0.5 rounded bg-gray-800 text-[11px] text-gray-300">Barcode & QR Scanners</span>
-            <span class="px-2 py-0.5 rounded bg-gray-800 text-[11px] text-gray-300">Biometric Punch Clocks</span>
-          </div>
-        </div>
-
-        <!-- Integration 4: WhatsApp & SMS Alerts -->
-        <div class="glass-card p-6 rounded-2xl">
-          <div class="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center
-            text-teal-400 mb-4">
-            <i data-lucide="message-square" class="w-5 h-5"></i>
-          </div>
-          <h4 class="text-base font-bold text-white mb-2">WhatsApp & SMS Automation</h4>
-          <p class="text-xs text-gray-400 leading-relaxed mb-4">
-            Send bills directly to customer WhatsApp numbers, send payment links, and recover abandoned carts.
-          </p>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="px-2 py-0.5 rounded bg-gray-800 text-[11px] text-gray-300">WhatsApp Invoices (PDF)</span>
-            <span class="px-2 py-0.5 rounded bg-gray-800 text-[11px] text-gray-300">Order Delivery Updates</span>
-            <span class="px-2 py-0.5 rounded bg-gray-800 text-[11px] text-gray-300">SMS OTP Authentication</span>
-            <span class="px-2 py-0.5 rounded bg-gray-800 text-[11px] text-gray-300">Promotional Campaigns</span>
-          </div>
-        </div>
-
-        <!-- Integration 5: Online Marketplaces & Couriers -->
-        <div class="glass-card p-6 rounded-2xl">
-          <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center
-            text-amber-400 mb-4">
-            <i data-lucide="truck" class="w-5 h-5"></i>
-          </div>
-          <h4 class="text-base font-bold text-white mb-2">Marketplaces & Courier Partners</h4>
-          <p class="text-xs text-gray-400 leading-relaxed mb-4">
-            Sync your stock across Amazon and your online store, and generate shipping labels with 1 click.
-          </p>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="px-2 py-0.5 rounded bg-gray-800 text-[11px] text-gray-300">Amazon & Flipkart Sync</span>
-            <span class="px-2 py-0.5 rounded bg-gray-800 text-[11px] text-gray-300">Shopify & WooCommerce</span>
-            <span class="px-2 py-0.5 rounded bg-gray-800 text-[11px] text-gray-300">Shiprocket & Delhivery</span>
-            <span class="px-2 py-0.5 rounded bg-gray-800 text-[11px] text-gray-300">Live Courier Tracking</span>
-          </div>
-        </div>
-
-        <!-- Integration 6: Tax & E-Invoicing -->
-        <div class="glass-card p-6 rounded-2xl">
-          <div class="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center
-            text-rose-400 mb-4">
-            <i data-lucide="file-check" class="w-5 h-5"></i>
-          </div>
-          <h4 class="text-base font-bold text-white mb-2">E-Invoicing & E-Way Bills</h4>
-          <p class="text-xs text-gray-400 leading-relaxed mb-4">
-            Direct government tax portal integration to generate official IRN QR codes and E-Way bills automatically.
-          </p>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="px-2 py-0.5 rounded bg-gray-800 text-[11px] text-gray-300">Instant GST E-Invoicing</span>
-            <span class="px-2 py-0.5 rounded bg-gray-800 text-[11px] text-gray-300">1-Click E-Way Bill Generation</span>
-            <span class="px-2 py-0.5 rounded bg-gray-800 text-[11px] text-gray-300">Government Portal Sync</span>
-            <span class="px-2 py-0.5 rounded bg-gray-800 text-[11px] text-gray-300">Automated Tax Filing Data</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Real Commercial Solutions in Plain English -->
-  <section id="solutions" class="py-20 px-6 relative z-10 border-t border-gray-900 bg-gray-950/70">
-    <div class="max-w-7xl mx-auto">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-        <div>
-          <h2 class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-3">Proven Projects</h2>
-          <h3 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Real Systems Delivered For Clients</h3>
-        </div>
-        <!-- Filter Tabs -->
-        <div class="flex flex-wrap gap-2 mt-6 md:mt-0" id="filter-buttons">
-          <button
-            onclick="filterProjects('all')"
-            class="filter-btn px-4 py-2 rounded-lg text-xs font-semibold bg-teal-500 text-gray-950 transition-all"
-            data-filter="all"
-          >
-            All Systems
-          </button>
-          <button
-            onclick="filterProjects('qsr')"
-            class="filter-btn px-4 py-2 rounded-lg text-xs font-semibold bg-gray-800 text-gray-300 hover:bg-gray-700
-              transition-all"
-            data-filter="qsr"
-          >
-            Restaurants & Cafes
-          </button>
-          <button
-            onclick="filterProjects('ecommerce')"
-            class="filter-btn px-4 py-2 rounded-lg text-xs font-semibold bg-gray-800 text-gray-300 hover:bg-gray-700
-              transition-all"
-            data-filter="ecommerce"
-          >
-            Retail & Shops
-          </button>
-          <button
-            onclick="filterProjects('finance')"
-            class="filter-btn px-4 py-2 rounded-lg text-xs font-semibold bg-gray-800 text-gray-300 hover:bg-gray-700
-              transition-all"
-            data-filter="finance"
-          >
-            Finance & Industry
-          </button>
-          <button
-            onclick="filterProjects('migration')"
-            class="filter-btn px-4 py-2 rounded-lg text-xs font-semibold bg-gray-800 text-gray-300 hover:bg-gray-700
-              transition-all"
-            data-filter="migration"
-          >
-            Old Data Transfer
-          </button>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
-
-        <!-- Solution 1: Touchscreen Self-Ordering Kiosk -->
-        <div class="project-card glass-card p-6 rounded-2xl flex flex-col justify-between" data-category="qsr">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/10 text-purple-400 border
-                border-purple-500/20">Restaurant</span>
-              <span class="text-xs text-gray-500">Self-Order Kiosk</span>
-            </div>
-            <h4 class="text-lg font-bold text-white mb-2">Self-Ordering Touchscreen Kiosk</h4>
-            <p class="text-sm text-gray-400 mb-4">
-              Customers walk up to a large touch screen, select food combos, customize drinks, and pay directly.
-            </p>
-            <div class="space-y-1.5 mb-6 text-xs text-gray-300">
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>Cuts counter lines by 40%</span></div>
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>Customers spend more per order</span></div>
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>Orders print instantly in the kitchen</span></div>
-            </div>
-          </div>
-          <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
-            <span class="text-xs text-teal-400 font-semibold">Faster Counter Clearance</span>
-            <button onclick="openModal('kiosk')" class="text-xs font-semibold text-teal-400 hover:text-teal-300 flex
-              items-center space-x-1 cursor-pointer">
-              <span>See Details</span><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Solution 2: Kitchen Display System -->
-        <div class="project-card glass-card p-6 rounded-2xl flex flex-col justify-between" data-category="qsr">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/10 text-purple-400 border
-                border-purple-500/20">Kitchen</span>
-              <span class="text-xs text-gray-500">Live Kitchen Screen</span>
-            </div>
-            <h4 class="text-lg font-bold text-white mb-2">Paperless Kitchen Order Screen (KDS)</h4>
-            <p class="text-sm text-gray-400 mb-4">
-              Replaces lost paper bills with clear kitchen TV screens showing chefs exactly what to cook and how fast.
-            </p>
-            <div class="space-y-1.5 mb-6 text-xs text-gray-300">
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>Zero lost food tickets</span></div>
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>Splits food to grill and drinks stations</span></div>
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>Color timer warns when orders are delayed</span></div>
-            </div>
-          </div>
-          <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
-            <span class="text-xs text-teal-400 font-semibold">Zero Cooking Mistakes</span>
-            <button onclick="openModal('kds')" class="text-xs font-semibold text-teal-400 hover:text-teal-300 flex
-              items-center space-x-1 cursor-pointer">
-              <span>See Details</span><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Solution 3: Food Delivery Aggregator Sync -->
-        <div class="project-card glass-card p-6 rounded-2xl flex flex-col justify-between" data-category="qsr">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border
-                border-emerald-500/20">Online Orders</span>
-              <span class="text-xs text-gray-500">Swiggy & Zomato</span>
-            </div>
-            <h4 class="text-lg font-bold text-white mb-2">Automatic Swiggy & Zomato Printing</h4>
-            <p class="text-sm text-gray-400 mb-4">
-              Orders from Swiggy & Zomato automatically appear in your billing counter and kitchen printer with zero
-              manual typing.
-            </p>
-            <div class="space-y-1.5 mb-6 text-xs text-gray-300">
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>Zero manual order re-typing</span></div>
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>Items automatically mark Out of Stock</span></div>
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>Automatic delivery rider handover tracking</span></div>
-            </div>
-          </div>
-          <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
-            <span class="text-xs text-teal-400 font-semibold">100% Automated Intake</span>
-            <button onclick="openModal('aggregator')" class="text-xs font-semibold text-teal-400 hover:text-teal-300
-              flex items-center space-x-1 cursor-pointer">
-              <span>See Details</span><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Solution 4: Herstore (herstore.in) Live Client -->
-        <div class="project-card glass-card p-6 rounded-2xl flex flex-col justify-between" data-category="ecommerce">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border
-                border-emerald-500/20 flex items-center space-x-1.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>Live Client Store</span>
-              </span>
-              <a
-                href="https://herstore.in"
-                target="_blank"
-                class="text-xs text-teal-400 hover:text-teal-300 font-semibold flex items-center space-x-1"
-              >
-                <span>herstore.in</span>
-                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-              </a>
-            </div>
-            <h4 class="text-lg font-bold text-white mb-2">Herstore (herstore.in) — Fashion E-Commerce</h4>
-            <p class="text-sm text-gray-400 mb-4">
-              Complete omnichannel fashion platform powering online sales at herstore.in and physical retail counters
-              with 1-click mobile phone OTP login and WhatsApp automations.
-            </p>
-            <div class="space-y-1.5 mb-6 text-xs text-gray-300">
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>Live public shopping store at herstore.in</span></div>
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>1-Click Mobile OTP login (no passwords)</span></div>
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>In-store POS counter synced with Pine Labs swipe machines</span></div>
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>Automated WhatsApp invoices & delivery alerts</span></div>
-            </div>
-          </div>
-          <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
-            <a
-              href="https://herstore.in"
-              target="_blank"
-              class="px-3 py-1.5 rounded-lg bg-teal-500/20 hover:bg-teal-500 hover:text-gray-950 text-teal-300
-                text-xs font-bold transition-all flex items-center space-x-1.5 cursor-pointer"
-            >
-              <span>Visit Live Store</span>
-              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-            </a>
-            <button onclick="openModal('ecommerce')" class="text-xs font-semibold text-teal-400 hover:text-teal-300 flex
-              items-center space-x-1 cursor-pointer">
-              <span>See Details</span><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Solution 5: Smart Payment Terminal Integration -->
-        <div class="project-card glass-card p-6 rounded-2xl flex flex-col justify-between" data-category="ecommerce">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-400 border
-                border-blue-500/20">Payments</span>
-              <span class="text-xs text-gray-500">Swipe Machines</span>
-            </div>
-            <h4 class="text-lg font-bold text-white mb-2">Direct Card & UPI Machine Sync</h4>
-            <p class="text-sm text-gray-400 mb-4">
-              When the cashier clicks Pay, the exact amount pops up on the Pine Labs swipe machine. Cashier cannot type
-              the wrong amount.
-            </p>
-            <div class="space-y-1.5 mb-6 text-xs text-gray-300">
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>Zero cash calculation errors</span></div>
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>Customer taps card or scans dynamic UPI QR</span></div>
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>End-of-day bank tally matches 100% perfectly</span></div>
-            </div>
-          </div>
-          <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
-            <span class="text-xs text-teal-400 font-semibold">100% Billing Accuracy</span>
-            <button onclick="openModal('pos-hardware')" class="text-xs font-semibold text-teal-400 hover:text-teal-300
-              flex items-center space-x-1 cursor-pointer">
-              <span>See Details</span><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Solution 6: Advanced Loan Management -->
-        <div class="project-card glass-card p-6 rounded-2xl flex flex-col justify-between" data-category="finance">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border
-                border-amber-500/20">Finance</span>
-              <span class="text-xs text-gray-500">Loans & EMIs</span>
-            </div>
-            <h4 class="text-lg font-bold text-white mb-2">Customer Loan & Monthly EMI Tracker</h4>
-            <p class="text-sm text-gray-400 mb-4">
-              Automates loan approvals, monthly interest calculations, payment reminders, and accounting book entries
-              without Excel sheets.
-            </p>
-            <div class="space-y-1.5 mb-6 text-xs text-gray-300">
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>Automatic monthly customer EMI schedule</span></div>
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>Calculates late penalties and early closures</span></div>
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>Clear record of who owes what at all times</span></div>
-            </div>
-          </div>
-          <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
-            <span class="text-xs text-teal-400 font-semibold">Clear Financial Records</span>
-            <button onclick="openModal('loan')" class="text-xs font-semibold text-teal-400 hover:text-teal-300 flex
-              items-center space-x-1 cursor-pointer">
-              <span>See Details</span><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Solution 7: Data Migration -->
-        <div class="project-card glass-card p-6 rounded-2xl flex flex-col justify-between" data-category="migration">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-rose-500/10 text-rose-400 border
-                border-rose-500/20">Upgrades</span>
-              <span class="text-xs text-gray-500">Data Transfer</span>
-            </div>
-            <h4 class="text-lg font-bold text-white mb-2">Safe Transfer of Old Invoices & Stock</h4>
-            <p class="text-sm text-gray-400 mb-4">
-              Switching from older software? We safely transfer your years of customer history, past bills, and product
-              stock without losing a single rupee.
-            </p>
-            <div class="space-y-1.5 mb-6 text-xs text-gray-300">
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>Zero lost customer numbers or stock</span></div>
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>Accounts and balances audited to match 100%</span></div>
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>Zero business downtime during transfer</span></div>
-            </div>
-          </div>
-          <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
-            <span class="text-xs text-teal-400 font-semibold">100% Safe Data Guarantee</span>
-            <button onclick="openModal('migration')" class="text-xs font-semibold text-teal-400 hover:text-teal-300 flex
-              items-center space-x-1 cursor-pointer">
-              <span>See Details</span><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Solution 8: Multi-Branch Local Data Sync -->
-        <div class="project-card glass-card p-6 rounded-2xl flex flex-col justify-between" data-category="qsr">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/10 text-purple-400 border
-                border-purple-500/20">Multi-Store</span>
-              <span class="text-xs text-gray-500">Offline Billing</span>
-            </div>
-            <h4 class="text-lg font-bold text-white mb-2">Multi-Shop Offline Billing & Sync</h4>
-            <p class="text-sm text-gray-400 mb-4">
-              Have branches in different locations? Your stores can continue billing even when the internet drops. All
-              sales sync to head office automatically once internet returns.
-            </p>
-            <div class="space-y-1.5 mb-6 text-xs text-gray-300">
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>Billing never stops during internet outages</span></div>
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>Sales sync automatically when internet restores</span></div>
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>Owner sees total sales across all branches live</span></div>
-            </div>
-          </div>
-          <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
-            <span class="text-xs text-teal-400 font-semibold">Always-Working Billing</span>
-            <button onclick="openModal('sync')" class="text-xs font-semibold text-teal-400 hover:text-teal-300 flex
-              items-center space-x-1 cursor-pointer">
-              <span>See Details</span><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Solution 9: Industrial Manufacturing MRP -->
-        <div class="project-card glass-card p-6 rounded-2xl flex flex-col justify-between" data-category="finance">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border
-                border-amber-500/20">Factory</span>
-              <span class="text-xs text-gray-500">Manufacturing</span>
-            </div>
-            <h4 class="text-lg font-bold text-white mb-2">Factory Production & Material Tracker</h4>
-            <p class="text-sm text-gray-400 mb-4">
-              Know exactly how much raw material you have, what each production batch costs, and when customer
-                deliveries
-              are scheduled to leave.
-            </p>
-            <div class="space-y-1.5 mb-6 text-xs text-gray-300">
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>Tracks raw material waste & true product cost</span></div>
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>Automated purchase orders when raw items get low</span></div>
-              <div class="flex items-center space-x-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5
-                text-teal-400"></i><span>Generates delivery slips & invoices</span></div>
-            </div>
-          </div>
-          <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
-            <span class="text-xs text-teal-400 font-semibold">Complete Factory Control</span>
-            <button onclick="openModal('mrp')" class="text-xs font-semibold text-teal-400 hover:text-teal-300 flex
-              items-center space-x-1 cursor-pointer">
-              <span>See Details</span><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- After-Handover Support (Clear Client Guarantees) -->
-  <section id="support" class="py-20 px-6 border-t border-gray-900 bg-gray-950/40 relative z-10">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-3">Guaranteed Support</h2>
-        <h3 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">How We Support You After Your System Is
-          Live</h3>
-        <p class="max-w-2xl mx-auto text-sm text-gray-400 mt-4 leading-relaxed">
-          We don't disappear after setting up your system. We train your staff, fix any problems, and keep your software
-          running fast.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Support 1 -->
-        <div class="glass-card p-7 rounded-2xl">
-          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center
-            justify-center text-emerald-400 mb-5">
-            <i data-lucide="shield-check" class="w-6 h-6"></i>
-          </div>
-          <h4 class="text-lg font-bold text-white mb-2">Free 30-60 Day Warranty Support</h4>
-          <p class="text-xs text-gray-400 leading-relaxed mb-4">
-            We stay by your side immediately after launch to fix any small hiccups, adjust bills, and ensure your
-              counter
-            runs smoothly without charging extra.
-          </p>
-          <div class="text-xs text-emerald-400 font-semibold flex items-center space-x-1.5">
-            <i data-lucide="check" class="w-3.5 h-3.5"></i>
-            <span>Included free with all setups</span>
-          </div>
-        </div>
-
-        <!-- Support 2 -->
-        <div class="glass-card p-7 rounded-2xl">
-          <div class="w-12 h-12 rounded-xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center
-            text-teal-400 mb-5">
-            <i data-lucide="users" class="w-6 h-6"></i>
-          </div>
-          <h4 class="text-lg font-bold text-white mb-2">Hands-on Staff Training</h4>
-          <p class="text-xs text-gray-400 leading-relaxed mb-4">
-            We personally train your cashiers, store managers, and accountants with simple step-by-step guidance so
-            everyone knows how to use the software easily.
-          </p>
-          <div class="text-xs text-teal-400 font-semibold flex items-center space-x-1.5">
-            <i data-lucide="check" class="w-3.5 h-3.5"></i>
-            <span>Cashiers, Managers, Accountants</span>
-          </div>
-        </div>
-
-        <!-- Support 3 -->
-        <div class="glass-card p-7 rounded-2xl">
-          <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center
-            text-purple-400 mb-5">
-            <i data-lucide="database-backup" class="w-6 h-6"></i>
-          </div>
-          <h4 class="text-lg font-bold text-white mb-2">Daily Backups & Cloud Health</h4>
-          <p class="text-xs text-gray-400 leading-relaxed mb-4">
-            Your bills and customer data are backed up automatically every single day to safe offsite storage so you
-            never lose business records.
-          </p>
-          <div class="text-xs text-purple-400 font-semibold flex items-center space-x-1.5">
-            <i data-lucide="check" class="w-3.5 h-3.5"></i>
-            <span>Daily automatic backups included</span>
-          </div>
-        </div>
-
-        <!-- Support 4 -->
-        <div class="glass-card p-7 rounded-2xl">
-          <div class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center
-            text-sky-400 mb-5">
-            <i data-lucide="plus-circle" class="w-6 h-6"></i>
-          </div>
-          <h4 class="text-lg font-bold text-white mb-2">Extra Features & New Branches</h4>
-          <p class="text-xs text-gray-400 leading-relaxed mb-4">
-            When you open a new shop branch or want new custom features added later, we quote them clearly as optional
-            add-ons based on what you need.
-          </p>
-          <div class="text-xs text-sky-400 font-semibold flex items-center space-x-1.5">
-            <i data-lucide="info" class="w-3.5 h-3.5"></i>
-            <span>Additional requests quoted clearly</span>
-          </div>
-        </div>
-
-        <!-- Support 5 -->
-        <div class="glass-card p-7 rounded-2xl">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center
-            text-amber-400 mb-5">
-            <i data-lucide="refresh-cw" class="w-6 h-6"></i>
-          </div>
-          <h4 class="text-lg font-bold text-white mb-2">Version Upgrades (When You Request)</h4>
-          <p class="text-xs text-gray-400 leading-relaxed mb-4">
-            Major software or ERP version upgrades are done exclusively when you ask for them, handled as a separate
-            project with full safety and testing.
-          </p>
-          <div class="text-xs text-amber-400 font-semibold flex items-center space-x-1.5">
-            <i data-lucide="info" class="w-3.5 h-3.5"></i>
-            <span>Optional / Done upon customer request</span>
-          </div>
-        </div>
-
-        <!-- Support 6 -->
-        <div class="glass-card p-7 rounded-2xl">
-          <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center
-            text-rose-400 mb-5">
-            <i data-lucide="phone-call" class="w-6 h-6"></i>
-          </div>
-          <h4 class="text-lg font-bold text-white mb-2">Emergency WhatsApp & Phone Helpline</h4>
-          <p class="text-xs text-gray-400 leading-relaxed mb-4">
-            If your billing counter or card machine has an urgent issue, call or WhatsApp directly for quick help from
-            a real engineer.
-          </p>
-          <div class="text-xs text-rose-400 font-semibold flex items-center space-x-1.5">
-            <i data-lucide="check" class="w-3.5 h-3.5"></i>
-            <span>Direct phone & WhatsApp support</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section (Direct Communication) -->
-  <section id="contact" class="py-20 px-6 border-t border-gray-900 bg-gray-950/80 relative z-10">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-16">
-        <div
-          class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/20
-            text-xs text-teal-400 font-semibold mb-4"
-        >
-          <i data-lucide="message-square" class="w-4 h-4"></i>
-          <span>Direct Contact</span>
-        </div>
-        <h3 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
-          Ready to Upgrade Your <br />
-          <span class="gradient-text">Business Operations?</span>
-        </h3>
-        <p class="text-gray-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-          Need complete ERP implementation, shop billing, restaurant kiosks, or cloud hosting? Get in touch directly:
-        </p>
-      </div>
-
-      <!-- 3 Direct Contact Cards (Both Team Contacts) -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-
-        <!-- WhatsApp Card -->
-        <div class="glass-card p-6 sm:p-8 rounded-3xl flex flex-col items-center text-center">
-          <div
-            class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center
-              text-emerald-400 mb-5"
-          >
-            <i data-lucide="message-circle" class="w-7 h-7"></i>
-          </div>
-          <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1">Instant Chat</span>
-          <h4 class="text-lg font-bold text-white mb-4">WhatsApp Direct</h4>
-          <div class="w-full space-y-2.5">
-            <a
-              href="https://wa.me/919567233672"
-              target="_blank"
-              class="w-full px-3 py-2 rounded-xl bg-gray-900/80 hover:bg-emerald-500 hover:text-gray-950
-                text-emerald-300 border border-gray-800 text-xs font-semibold flex items-center justify-between
-                transition-all"
-            >
-              <span>+91 9567233672</span>
-              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-            </a>
-            <a
-              href="https://wa.me/919633284942"
-              target="_blank"
-              class="w-full px-3 py-2 rounded-xl bg-gray-900/80 hover:bg-emerald-500 hover:text-gray-950
-                text-emerald-300 border border-gray-800 text-xs font-semibold flex items-center justify-between
-                transition-all"
-            >
-              <span>+91 9633284942</span>
-              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Phone Call Card -->
-        <div class="glass-card p-6 sm:p-8 rounded-3xl flex flex-col items-center text-center">
-          <div
-            class="w-14 h-14 rounded-2xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center
-              text-teal-400 mb-5"
-          >
-            <i data-lucide="phone" class="w-7 h-7"></i>
-          </div>
-          <span class="text-xs font-bold text-teal-400 uppercase tracking-wider mb-1">Direct Voice Call</span>
-          <h4 class="text-lg font-bold text-white mb-4">Phone Numbers</h4>
-          <div class="w-full space-y-2.5">
-            <a
-              href="tel:+919567233672"
-              class="w-full px-3 py-2 rounded-xl bg-gray-900/80 hover:bg-teal-500 hover:text-gray-950 text-teal-300
-                border border-gray-800 text-xs font-semibold flex items-center justify-between transition-all"
-            >
-              <span>+91 9567233672</span>
-              <i data-lucide="phone-call" class="w-3.5 h-3.5"></i>
-            </a>
-            <a
-              href="tel:+919633284942"
-              class="w-full px-3 py-2 rounded-xl bg-gray-900/80 hover:bg-teal-500 hover:text-gray-950 text-teal-300
-                border border-gray-800 text-xs font-semibold flex items-center justify-between transition-all"
-            >
-              <span>+91 9633284942</span>
-              <i data-lucide="phone-call" class="w-3.5 h-3.5"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Email Card -->
-        <div class="glass-card p-6 sm:p-8 rounded-3xl flex flex-col items-center text-center">
-          <div
-            class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center
-              text-purple-400 mb-5"
-          >
-            <i data-lucide="mail" class="w-7 h-7"></i>
-          </div>
-          <span class="text-xs font-bold text-purple-400 uppercase tracking-wider mb-1">Direct Inquiries</span>
-          <h4 class="text-lg font-bold text-white mb-4">Email Addresses</h4>
-          <div class="w-full space-y-2.5">
-            <a
-              href="mailto:sabareesh9961@gmail.com"
-              class="w-full px-3 py-2 rounded-xl bg-gray-900/80 hover:bg-purple-500 hover:text-white text-purple-300
-                border border-gray-800 text-xs font-semibold flex items-center justify-between transition-all"
-            >
-              <span class="truncate">sabareesh9961@gmail.com</span>
-              <i data-lucide="mail" class="w-3.5 h-3.5 shrink-0 ml-1"></i>
-            </a>
-            <a
-              href="mailto:mruthulraj6@gmail.com"
-              class="w-full px-3 py-2 rounded-xl bg-gray-900/80 hover:bg-purple-500 hover:text-white text-purple-300
-                border border-gray-800 text-xs font-semibold flex items-center justify-between transition-all"
-            >
-              <span class="truncate">mruthulraj6@gmail.com</span>
-              <i data-lucide="mail" class="w-3.5 h-3.5 shrink-0 ml-1"></i>
-            </a>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Trust Indicators -->
-      <div class="glass-card p-6 rounded-2xl flex flex-col sm:flex-row items-center justify-around gap-4 text-center">
-        <div class="flex items-center space-x-2 text-xs text-gray-300">
-          <i data-lucide="check-circle-2" class="w-4 h-4 text-teal-400"></i>
-          <span>All Major ERP Editions & Versions</span>
-        </div>
-        <div class="flex items-center space-x-2 text-xs text-gray-300">
-          <i data-lucide="check-circle-2" class="w-4 h-4 text-teal-400"></i>
-          <span>Free Staff & Cashier Training</span>
-        </div>
-        <div class="flex items-center space-x-2 text-xs text-gray-300">
-          <i data-lucide="check-circle-2" class="w-4 h-4 text-teal-400"></i>
-          <span>30-60 Days Warranty & Support</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="py-10 px-6 border-t border-gray-900 text-center text-xs text-gray-500 relative z-10">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="text-gray-400">
-        © 2026 CoreSync Solutions. Group of Freelance Tech Specialists.
-      </div>
-      <div class="flex space-x-6 text-gray-400">
-        <span>Standard ERP Modules</span>
-        <span>Hardware Integrations</span>
-        <span>Cloud Hosting & Support</span>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Modal for Details -->
-  <div
-    id="details-modal"
-    class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4"
-    onclick="handleBackdropClick(event)"
-  >
-    <div class="glass-card max-w-lg w-full p-6 sm:p-8 rounded-3xl border border-gray-700 relative shadow-2xl
-      max-h-[90vh] overflow-y-auto">
-      <button
-        onclick="closeModal()"
-        class="absolute top-6 right-6 text-gray-400 hover:text-white p-2 rounded-lg bg-gray-800/80 cursor-pointer"
-      >
-        <i data-lucide="x" class="w-5 h-5"></i>
-      </button>
-      <div id="modal-content">
-        <!-- Dynamic Content Inserted Here -->
+      <div class="facts">
+        <div><b>4+ years</b> of experience</div>
+        <div><b>35+ businesses</b> already using it</div>
+        <div><b>Worldwide</b> — we serve businesses anywhere</div>
+        <div><b>Easy switch</b> from any software</div>
+        <div><b>Free</b> staff training</div>
       </div>
     </div>
   </div>
 
-  <!-- Client-side Script -->
+  <!-- What we do -->
+  <section id="what" class="soft">
+    <div class="wrap">
+      <div class="head">
+        <h2>What the software does for you</h2>
+        <p>No more notebooks, Excel sheets and guesswork. Everything is recorded automatically.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="icon">🧾</div>
+          <h3>Billing</h3>
+          <p>Fast bills at the counter. Send bills on WhatsApp or print them. GST is calculated for you.</p>
+        </div>
+        <div class="card">
+          <div class="icon">📦</div>
+          <h3>Stock</h3>
+          <p>Know what is in every shop and godown, right now. Get a warning before items run out.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🛒</div>
+          <h3>Buying from suppliers</h3>
+          <p>Place orders with suppliers, check what was delivered, and make sure you are never overcharged.</p>
+        </div>
+        <div class="card">
+          <div class="icon">📊</div>
+          <h3>Accounts & GST</h3>
+          <p>See your profit and loss any time. Bank entries, GST reports and e-way bills are ready when you need them.</p>
+        </div>
+        <div class="card">
+          <div class="icon">👥</div>
+          <h3>Staff & salary</h3>
+          <p>Attendance from the punching machine, leave approvals and monthly salary slips in one click.</p>
+        </div>
+        <div class="card">
+          <div class="icon">📞</div>
+          <h3>Customers & follow-ups</h3>
+          <p>Keep track of every enquiry and reminder, so no customer is forgotten.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🏭</div>
+          <h3>Factory production</h3>
+          <p>Track raw materials, waste and the real cost of every product you make.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🏪</div>
+          <h3>Many branches</h3>
+          <p>Shops keep billing even when the internet is down. The owner sees sales from all branches in one place.</p>
+        </div>
+      </div>
+      <div class="mobile-box">
+        <div class="big">📱</div>
+        <div>
+          <h3>Your whole business in your pocket</h3>
+          <p>Check today's sales, stock, pending payments and staff attendance from your phone — at home, on the road or abroad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who it's for -->
+  <section id="who">
+    <div class="wrap">
+      <div class="head">
+        <h2>Made for businesses like yours</h2>
+        <p>From a single shop to a chain of branches — we set it up to match the way your business already works.</p>
+      </div>
+      <div class="types">
+        <div class="type"><div class="icon">🍔</div><div><h3>Restaurants & cafes</h3><p>Self-order screens, kitchen screens, and Swiggy/Zomato orders printed automatically.</p></div></div>
+        <div class="type"><div class="icon">👗</div><div><h3>Shops & supermarkets</h3><p>Barcode billing, card machine linked to the bill, and an online store.</p></div></div>
+        <div class="type"><div class="icon">💊</div><div><h3>Pharmacies</h3><p>Batch and expiry tracking. Expired medicines can't be billed by mistake.</p></div></div>
+        <div class="type"><div class="icon">🩺</div><div><h3>Clinics & hospitals</h3><p>Appointments, doctor and lab bills, and patient history without paper files.</p></div></div>
+        <div class="type"><div class="icon">🚚</div><div><h3>Wholesale & distribution</h3><p>Credit limits, pending payments, godown stock and delivery slips.</p></div></div>
+        <div class="type"><div class="icon">🏭</div><div><h3>Factories</h3><p>Raw material use, production cost and delivery planning.</p></div></div>
+        <div class="type"><div class="icon">🏗️</div><div><h3>Construction & contractors</h3><p>Material sent to each site, contractor bills, and budget vs actual spend.</p></div></div>
+        <div class="type"><div class="icon">🏋️</div><div><h3>Gyms & fitness</h3><p>Membership renewals, WhatsApp reminders and fingerprint entry gates.</p></div></div>
+        <div class="type"><div class="icon">💇</div><div><h3>Salons & spas</h3><p>Online bookings, staff schedules, packages and memberships.</p></div></div>
+        <div class="type"><div class="icon">🔧</div><div><h3>Repair & service centres</h3><p>Job cards, spare parts used, warranty checks and customer updates.</p></div></div>
+        <div class="type"><div class="icon">🧰</div><div><h3>Technicians & field service</h3><p>Assign jobs to technicians, track site visits and bill on the spot.</p></div></div>
+        <div class="type"><div class="icon">📱</div><div><h3>Mobile & electronics shops</h3><p>Serial / IMEI number tracking, warranty and repairs.</p></div></div>
+        <div class="type"><div class="icon">🥐</div><div><h3>Bakeries & food production</h3><p>Recipes, daily production, expiry dates and supply to your outlets.</p></div></div>
+        <div class="type"><div class="icon">🛋️</div><div><h3>Furniture & interiors</h3><p>Custom orders, production in the workshop and installation at site.</p></div></div>
+        <div class="type"><div class="icon">💼</div><div><h3>Agencies & consultants</h3><p>Projects, tasks, time spent by each person and billing by the hour.</p></div></div>
+        <div class="type"><div class="icon">🎓</div><div><h3>Training & coaching centres</h3><p>Online courses, batches, fee collection and certificates.</p></div></div>
+        <div class="type"><div class="icon">🎟️</div><div><h3>Event organisers</h3><p>Ticket sales, registrations and attendee check-in.</p></div></div>
+        <div class="type"><div class="icon">📅</div><div><h3>Rental businesses</h3><p>What is rented out, return dates, deposits and late charges.</p></div></div>
+        <div class="type"><div class="icon">🚛</div><div><h3>Transport & fleet owners</h3><p>Vehicles, fuel, servicing, driver costs and trip billing.</p></div></div>
+        <div class="type"><div class="icon">🌐</div><div><h3>Online sellers</h3><p>Your own website shop, online payments and courier booking.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Connects -->
+  <section class="soft">
+    <div class="wrap">
+      <div class="head">
+        <h2>Works with what you already use</h2>
+        <p>We connect your machines and apps so your staff don't have to type things twice.</p>
+      </div>
+      <div class="chips">
+        <span class="chip">💳 Card swipe machines (Pine Labs, Paytm)</span>
+        <span class="chip">📱 UPI QR codes</span>
+        <span class="chip">🛵 Swiggy & Zomato</span>
+        <span class="chip">💬 WhatsApp bills & reminders</span>
+        <span class="chip">🖨️ Bill printers</span>
+        <span class="chip">🔍 Barcode scanners</span>
+        <span class="chip">⚖️ Weighing scales</span>
+        <span class="chip">👆 Punching machines</span>
+        <span class="chip">🛍️ Amazon, Flipkart, Shopify</span>
+        <span class="chip">📦 Shiprocket & Delhivery</span>
+        <span class="chip">🧾 GST e-invoice & e-way bill</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Switching -->
+  <section id="switch">
+    <div class="wrap">
+      <div class="head">
+        <h2>Already using other software? We'll move you over.</h2>
+        <p>Whatever you use today, we bring your data across safely so you can start right where you left off — with a better system.</p>
+      </div>
+      <div class="chips" style="margin-bottom: 32px;">
+        <span class="chip">Tally</span>
+        <span class="chip">Busy</span>
+        <span class="chip">Marg</span>
+        <span class="chip">Vyapar</span>
+        <span class="chip">Zoho</span>
+        <span class="chip">QuickBooks</span>
+        <span class="chip">SAP</span>
+        <span class="chip">Restaurant billing software</span>
+        <span class="chip">Excel sheets</span>
+        <span class="chip">Notebooks & paper registers</span>
+        <span class="chip">Any other software</span>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="icon">📁</div>
+          <h3>Nothing gets left behind</h3>
+          <p>Customers, suppliers, products, stock, old bills and pending payments — all moved to the new system.</p>
+        </div>
+        <div class="card">
+          <div class="icon">✅</div>
+          <h3>Every number checked</h3>
+          <p>We match your balances and stock with the old software before you switch, so the books are right from day one.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🏃</div>
+          <h3>No break in business</h3>
+          <p>Your shop keeps running while we move. We switch over on a day that suits you.</p>
+        </div>
+        <div class="card">
+          <div class="icon">📈</div>
+          <h3>Better than before</h3>
+          <p>Everything in one place — billing, stock, accounts, staff and online orders — instead of many separate tools.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our work -->
+  <section id="work" class="work soft">
+    <div class="wrap">
+      <div class="head">
+        <h2>Some of the work we've done</h2>
+        <p>Real systems running in real businesses today — in India and abroad.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <span class="tag">Restaurant chain</span>
+          <h3>Self-order screens & kitchen screens</h3>
+          <p>Customers order and pay on a touch screen. Orders go straight to the kitchen screen.</p>
+          <ul>
+            <li>Shorter queues at the counter</li>
+            <li>Customers spend more per order</li>
+            <li>No lost kitchen tickets</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Restaurant chain</span>
+          <h3>Swiggy & Zomato orders, automatic</h3>
+          <p>Online orders appear at the billing counter and kitchen printer by themselves.</p>
+          <ul>
+            <li>No re-typing of orders</li>
+            <li>Items marked "out of stock" everywhere at once</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Fashion store</span>
+          <h3>Herstore — online + in-store</h3>
+          <p>An online shop and physical store counters working together, with the same stock.</p>
+          <ul>
+            <li>Login with mobile OTP, no passwords</li>
+            <li>Card machine linked to the bill</li>
+            <li>Bills and delivery updates on WhatsApp</li>
+          </ul>
+          <a href="https://herstore.in" target="_blank" class="link">Visit herstore.in →</a>
+        </div>
+        <div class="card">
+          <span class="tag">Multi-branch business</span>
+          <h3>Billing that never stops</h3>
+          <p>Branches keep billing without internet. Sales reach head office once it's back.</p>
+          <ul>
+            <li>No downtime at the counter</li>
+            <li>Owner sees all branches live</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Finance company</span>
+          <h3>Loan & EMI tracker</h3>
+          <p>Monthly EMIs, interest, late fees and reminders — calculated automatically.</p>
+          <ul>
+            <li>Always know who owes what</li>
+            <li>No more Excel sheets</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Moving from old software</span>
+          <h3>Safe transfer of old data</h3>
+          <p>We move your old bills, customers and stock to the new system without losing anything.</p>
+          <ul>
+            <li>Balances checked to match</li>
+            <li>Business keeps running during the move</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Restaurant chain</span>
+          <h3>Back office for many outlets</h3>
+          <p>Everything behind the counter for a multi-outlet restaurant brand.</p>
+          <ul>
+            <li>Automatic end-of-day till closing report by email</li>
+            <li>Daily sales report by outlet and session</li>
+            <li>Discount rules, staff discounts and combo meals</li>
+            <li>Swiggy/Zomato commission booked in accounts</li>
+            <li>Stock transfers, stock counts and outlet-wise costing</li>
+            <li>Purchase orders, petty cash approvals and staff leave</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Pharmacy</span>
+          <h3>Pharmacy stores — overseas client</h3>
+          <p>Fast counter billing and stock control for a pharmacy business abroad.</p>
+          <ul>
+            <li>Stock counting with a mobile phone</li>
+            <li>Many barcodes per product and label printing</li>
+            <li>Credit customers billed monthly</li>
+            <li>Automatic cash counter reconciliation</li>
+            <li>Staff attendance machine connected</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Trading company</span>
+          <h3>Pipes & building material trader</h3>
+          <p>Buying, stock and selling for a trading company.</p>
+          <ul>
+            <li>Custom invoice, delivery slip and purchase order prints</li>
+            <li>Goods received reports</li>
+            <li>Last sale and purchase price shown while quoting</li>
+            <li>Supplier trade licence tracking</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Manufacturer</span>
+          <h3>Production & sales targets — overseas client</h3>
+          <p>Reports and automation for a manufacturing company.</p>
+          <ul>
+            <li>Product cost calculated automatically from raw materials</li>
+            <li>Production schedule and late delivery reports</li>
+            <li>Sales targets by country, team and product</li>
+            <li>Customer ageing and grouped ledger reports</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Coffee & beverage supplier</span>
+          <h3>Machines on rent + shop billing</h3>
+          <p>Selling products and renting coffee machines to customers.</p>
+          <ul>
+            <li>Track which machine is at which customer</li>
+            <li>Rental price calculated automatically</li>
+            <li>Shop billing with margin control and expenses</li>
+            <li>Sales staff only see their own customers</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Online store</span>
+          <h3>Frames & mirrors — online price builder</h3>
+          <p>A website where customers design their own frame and see the price instantly.</p>
+          <ul>
+            <li>Price builder for custom sizes and options</li>
+            <li>Orders synced from Shopify</li>
+            <li>Customer support tickets</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Salon</span>
+          <h3>Salon management software</h3>
+          <p>Bookings, services and billing for a salon business.</p>
+          <ul>
+            <li>Appointments and services</li>
+            <li>Billing and customer history</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Gym</span>
+          <h3>Gym & fitness centre</h3>
+          <p>Members, plans and renewals for a fitness business.</p>
+          <ul>
+            <li>Membership plans and renewals</li>
+            <li>Member records and billing</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Office & services company</span>
+          <h3>Sales team and website</h3>
+          <p>Customer leads, quotes and website for a services company.</p>
+          <ul>
+            <li>Customer lead tracking with tags</li>
+            <li>Custom quotation format</li>
+            <li>Meetings with Google Meet links</li>
+            <li>Company website</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Any business</span>
+          <h3>WhatsApp from your system</h3>
+          <p>Send messages to customers on WhatsApp straight from the software.</p>
+          <ul>
+            <li>Bills, offers and reminders on WhatsApp</li>
+            <li>Bulk offer messages to customers</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how">
+    <div class="wrap">
+      <div class="head">
+        <h2>How it works</h2>
+        <p>Simple steps. You run your business — we handle the software.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>We talk</h3><p>Tell us how your business works today and what problems you face.</p></div>
+        <div class="step"><h3>We plan</h3><p>We use ready-made features first to keep your cost low, and only build extra where you really need it.</p></div>
+        <div class="step"><h3>We set up & train</h3><p>We set everything up on a secure cloud and train your cashiers, managers and accountant — on video call or in person, wherever you are.</p></div>
+        <div class="step"><h3>We stay with you</h3><p>We fix any problems after going live and are a call or WhatsApp away.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- After going live -->
+  <section class="soft">
+    <div class="wrap">
+      <div class="head">
+        <h2>After your system goes live</h2>
+      </div>
+      <ul class="promise">
+        <li><b>30–60 days of free support</b><span>We fix small issues and adjust things at no extra cost.</span></li>
+        <li><b>Daily backups</b><span>Your bills and customer data are saved every day, so nothing is lost.</span></li>
+        <li><b>Direct phone & WhatsApp help</b><span>Talk to the person who built your system, not a call centre.</span></li>
+        <li><b>Clear prices for extra work</b><span>New branches or new features are quoted clearly before we start.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Who we are -->
+  <section id="about">
+    <div class="wrap">
+      <div class="head">
+        <h2>Who we are</h2>
+        <p>We are independent freelancers, not a big agency. When you work with us, you work directly with the people who build your system.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="icon">🤝</div>
+          <h3>Talk directly to the expert</h3>
+          <p>No salespeople, no middlemen. The person you talk to is the person who sets up your system.</p>
+        </div>
+        <div class="card">
+          <div class="icon">💰</div>
+          <h3>Fair, freelance pricing</h3>
+          <p>No big-company overheads. You pay for the work done for your business, nothing more.</p>
+        </div>
+        <div class="card">
+          <div class="icon">⚡</div>
+          <h3>Quick and flexible</h3>
+          <p>Small team, quick decisions. We adjust to your schedule and your way of working.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="soft">
+    <div class="wrap">
+      <div class="head">
+        <h2>Common questions</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>How much does it cost?</summary>
+          <p>It depends on your business size, number of users and the features you need. We understand your needs first and then give you a clear quote.</p>
+        </details>
+        <details>
+          <summary>How long does the setup take?</summary>
+          <p>A small shop can usually start quickly, while bigger businesses with many branches take longer. We share a clear timeline before we begin.</p>
+        </details>
+        <details>
+          <summary>Can I use it on my mobile phone?</summary>
+          <p>Yes. You can check sales, stock and reports from your phone, tablet or computer — from anywhere.</p>
+        </details>
+        <details>
+          <summary>What happens if the internet goes down?</summary>
+          <p>Your billing counter keeps working. Bills are saved and sent to the system automatically once the internet is back.</p>
+        </details>
+        <details>
+          <summary>Is my data safe?</summary>
+          <p>Your data is stored on a secure cloud server and backed up every day, so you never lose your records.</p>
+        </details>
+        <details>
+          <summary>I already use other software. Can I switch?</summary>
+          <p>Yes. We move your customers, products, stock, old bills and balances to the new system and check that every number matches.</p>
+        </details>
+        <details>
+          <summary>Will my staff be able to use it?</summary>
+          <p>Yes. It is simple to use, and we train your cashiers, managers and accountant step by step until they are comfortable.</p>
+        </details>
+        <details>
+          <summary>Do you work with businesses outside India?</summary>
+          <p>Yes. We work with businesses anywhere in the world — setup, training and support are done online, or on-site when needed.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="head">
+        <h2>Let's talk about your business</h2>
+        <p>Call, WhatsApp or email us. We usually reply the same day.</p>
+        <p style="margin-top: 8px; font-weight: 600; color: var(--brand);">🌍 Based in India · Working with businesses anywhere in the world, online or on-site</p>
+      </div>
+      <div class="contact-grid">
+        <div class="card person">
+          <h3>💬 WhatsApp</h3>
+          <a href="https://wa.me/919567233672" target="_blank">+91 95672 33672</a>
+          <a href="https://wa.me/919633284942" target="_blank">+91 96332 84942</a>
+        </div>
+        <div class="card person">
+          <h3>📞 Call</h3>
+          <a href="tel:+919567233672">+91 95672 33672</a>
+          <a href="tel:+919633284942">+91 96332 84942</a>
+        </div>
+        <div class="card person">
+          <h3>✉️ Email</h3>
+          <a href="mailto:mruthulraj6@gmail.com">mruthulraj6@gmail.com</a>
+          <a href="mailto:sabareesh9961@gmail.com">sabareesh9961@gmail.com</a>
+        </div>
+      </div>
+      <form class="card form-card" onsubmit="return sendRequest(event)">
+        <h3>Request a call back</h3>
+        <p class="sub">Fill this in and send — it opens WhatsApp with your details ready.</p>
+        <div class="form-row">
+          <div>
+            <label for="f-name">Your name</label>
+            <input id="f-name" required placeholder="e.g. Rahul" />
+          </div>
+          <div>
+            <label for="f-phone">Phone number</label>
+            <input id="f-phone" type="tel" required placeholder="e.g. +91 98765 43210" />
+          </div>
+        </div>
+        <label for="f-type">Type of business</label>
+        <select id="f-type">
+          <option>Restaurant / Cafe</option>
+          <option>Shop / Supermarket</option>
+          <option>Pharmacy</option>
+          <option>Clinic / Hospital</option>
+          <option>Wholesale / Distribution</option>
+          <option>Factory / Manufacturing</option>
+          <option>Services / Agency</option>
+          <option>Other</option>
+        </select>
+        <label for="f-msg">What do you need? (optional)</label>
+        <textarea id="f-msg" rows="3" placeholder="e.g. Billing for 2 shops and stock tracking"></textarea>
+        <button type="submit" class="btn btn-main">Send request on WhatsApp</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">© 2026 CoreSync Solutions · Freelance business software experts · Serving clients worldwide</div>
+  </footer>
+
+  <a href="https://wa.me/919567233672" target="_blank" class="wa-float">💬 WhatsApp</a>
+
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      if (window.lucide) {
-        window.lucide.createIcons();
-      }
-    });
-
-    // Filter projects
-    function filterProjects(category) {
-      const cards = document.querySelectorAll('.project-card');
-      const buttons = document.querySelectorAll('.filter-btn');
-
-      buttons.forEach(function (btn) {
-        if (btn.getAttribute('data-filter') === category) {
-          btn.className =
-            'filter-btn px-4 py-2 rounded-lg text-xs font-semibold ' +
-            'bg-teal-500 text-gray-950 transition-all';
-        } else {
-          btn.className =
-            'filter-btn px-4 py-2 rounded-lg text-xs font-semibold ' +
-            'bg-gray-800 text-gray-300 hover:bg-gray-700 transition-all';
-        }
-      });
-
-      cards.forEach(function (card) {
-        if (category === 'all' || card.getAttribute('data-category') === category) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
+    function sendRequest(e) {
+      e.preventDefault();
+      var text = 'Hi, I would like a call back.\n' +
+        'Name: ' + document.getElementById('f-name').value + '\n' +
+        'Phone: ' + document.getElementById('f-phone').value + '\n' +
+        'Business: ' + document.getElementById('f-type').value + '\n' +
+        'Need: ' + (document.getElementById('f-msg').value || '-');
+      window.open('https://wa.me/919567233672?text=' + encodeURIComponent(text), '_blank');
+      return false;
     }
-
-    // Modal data dictionary (in plain business English)
-    const modalData = {
-      kiosk: {
-        title: 'Self-Ordering Touchscreen Kiosks',
-        desc: 'Allows customers to view pictures of your food, pick combo items, make special requests, and pay ' +
-          'without waiting in long lines. Reduces staff counter pressure and increases average customer spending.',
-        tech: ['Fast Touchscreen UI', 'Combo Meal Builder', 'Direct Card/UPI Pay', 'Instant Kitchen Print']
-      },
-      kds: {
-        title: 'Paperless Kitchen Order Screen (KDS)',
-        desc: 'Eliminates messy paper tickets in busy kitchens. Orders show on clear digital screens with color ' +
-          'timers. Chefs can mark food ready with one tap, speeding up service.',
-        tech: ['Real-Time Order Screen', 'Separates Grill & Drinks', 'Cooking Delay Alerts', 'Recall Past Orders']
-      },
-      aggregator: {
-        title: 'Automatic Swiggy & Zomato Order Printing',
-        desc: 'Connects online food apps directly into your counter and kitchen printer. When a customer orders ' +
-          'on Swiggy or Zomato, your kitchen printer prints it instantly without staff typing anything.',
-        tech: ['Swiggy & Zomato API', 'Automatic Receipt Print', 'Out-Of-Stock Sync', 'Rider Handover Alerts']
-      },
-      ecommerce: {
-        title: 'Herstore (herstore.in) — Fashion E-Commerce & Retail',
-        desc: 'Complete live retail and e-commerce platform built for Herstore (herstore.in). Powers their live ' +
-          'online store with 1-click mobile OTP login, WhatsApp order notifications, and seamlessly syncs inventory ' +
-          'with their physical store billing counters and Pine Labs card swipe machines.',
-        tech: ['Live Store: herstore.in', 'Mobile Phone OTP Login', 'Pine Labs POS Sync', 'WhatsApp Automations']
-      },
-      'pos-hardware': {
-        title: 'Direct Card Swipe Machine Sync',
-        desc: 'Directly connects your billing counter computer to Pine Labs smart swipe machines. The exact bill ' +
-          'amount appears on the card machine automatically so cashiers never type the wrong amount.',
-        tech: ['Pine Labs Machine Sync', 'Tap & Pay Cards', 'Dynamic UPI QR Code', 'Exact Bank Tally']
-      },
-      loan: {
-        title: 'Customer Loan & Installment (EMI) Tracker',
-        desc: 'Tracks monthly customer loan installments, interest, and payment dates automatically. No more ' +
-          'confusing Excel spreadsheets or missed payment collections.',
-        tech: ['Monthly EMI Schedule', 'Late Fee Calculation', 'Automatic Bookkeeping', 'Customer Statements']
-      },
-      migration: {
-        title: 'Safe Transfer of Old Invoices & Stock',
-        desc: 'Moving from old software to a modern system? We transfer all your past invoices, customer phone ' +
-          'numbers, and warehouse stock balances with 100% accuracy and zero lost data.',
-        tech: ['Zero Lost Records', '100% Balanced Accounts', 'No Business Downtime', 'Audit & Verification']
-      },
-      sync: {
-        title: 'Multi-Shop Offline Billing & Sync',
-        desc: 'Run multiple shops without fear of internet failure. Each shop can continue billing offline without ' +
-          'internet, and everything syncs automatically to head office when internet returns.',
-        tech: ['Continuous Offline Billing', 'Automatic Cloud Sync', 'Multi-Store Inventory', 'Head Office Reports']
-      },
-      mrp: {
-        title: 'Factory Production & Material Tracker',
-        desc: 'Designed for manufacturing and fabrication businesses. Tracks raw material consumption, waste, ' +
-          'machine capacity, and exact finished product costs.',
-        tech: ['Raw Material Tracking', 'Exact Batch Costing', 'Low Stock Auto-Order', 'Delivery Challans']
-      }
-    };
-
-    function openModal(key) {
-      const data = modalData[key];
-      if (!data) return;
-      const content = document.getElementById('modal-content');
-      const badges = data.tech.map(function (t) {
-        return '<span class="px-2.5 py-1 rounded-md bg-gray-800 text-xs text-gray-200">' + t + '</span>';
-      }).join(' ');
-
-      content.innerHTML =
-        '<h3 class="text-2xl font-bold text-white mb-3">' + data.title + '</h3>' +
-        '<p class="text-sm text-gray-300 leading-relaxed mb-6">' + data.desc + '</p>' +
-        '<div class="mb-6">' +
-        '<div class="text-xs font-semibold text-teal-400 uppercase tracking-wider mb-2">' +
-        'Key Benefits & Features</div>' +
-        '<div class="flex flex-wrap gap-2">' + badges + '</div>' +
-        '</div>' +
-        '<button onclick="closeModal()" class="w-full py-2.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-gray-950 ' +
-        'font-bold text-xs uppercase tracking-wider transition-all cursor-pointer">' +
-        'Close Details</button>';
-
-      const modal = document.getElementById('details-modal');
-      modal.classList.remove('hidden');
-      if (window.lucide) {
-        window.lucide.createIcons();
-      }
-    }
-
-    function closeModal() {
-      const modal = document.getElementById('details-modal');
-      modal.classList.add('hidden');
-    }
-
-    function handleBackdropClick(event) {
-      if (event.target.id === 'details-modal') {
-        closeModal();
-      }
-    }
-
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobile-menu');
-      menu.classList.toggle('hidden');
-    }
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
-        closeModal();
-      }
-    });
   </script>
 </body>
 </html>
